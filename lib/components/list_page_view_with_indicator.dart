@@ -87,7 +87,7 @@ class _ListPageViewWithIndicatorState extends State<ListPageViewWithIndicator> {
                   final value = e.value;
                   return Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
+                      horizontal: 20.0,
                     ),
                     child: Column(
                       children: [

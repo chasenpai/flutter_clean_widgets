@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_widgets/components/flexible_row_category.dart';
 import 'package:flutter_clean_widgets/components/information_bar.dart';
 import 'package:flutter_clean_widgets/components/list_page_view_with_indicator.dart';
+import 'package:flutter_clean_widgets/components/partial_list_page_view.dart';
 import 'package:flutter_clean_widgets/components/scrollable_row_category.dart';
 import 'package:flutter_clean_widgets/components/upcoming_one_week_calendar.dart';
 
@@ -58,6 +59,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                         child: FlexibleRowCategory(),
                       ),
                       SizedBox(height: 24,),
+                      ScrollableRowCategory(),
+                      SizedBox(height: 24,),
+                      ListPageViewWithIndicator(),
+                      SizedBox(height: 24,),
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 16.0,
@@ -65,9 +70,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                         child: InformationBar(),
                       ),
                       SizedBox(height: 24,),
-                      ScrollableRowCategory(),
-                      SizedBox(height: 24,),
-                      ListPageViewWithIndicator(),
+                      PartialListPageView(),
                     ],
                   ),
                   Container(
