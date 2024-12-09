@@ -9,10 +9,10 @@ class ListPageViewWithIndicator extends StatefulWidget {
 
 class _ListPageViewWithIndicatorState extends State<ListPageViewWithIndicator> {
 
-  final pageController = PageController(viewportFraction: 1,);
-  final currentPageNotifier = ValueNotifier<int>(0);
+  final _pageController = PageController(viewportFraction: 1,);
+  final _currentPageNotifier = ValueNotifier<int>(0);
 
-  final categories = [
+  final _categories = [
     '메이플스토리',
     '던전앤파이터',
     '리그 오브 레전드',
@@ -65,15 +65,15 @@ class _ListPageViewWithIndicatorState extends State<ListPageViewWithIndicator> {
         SizedBox(
           height: 274.0,
           child: PageView.builder(
-            controller: pageController,
+            controller: _pageController,
             onPageChanged: (index) {
-              currentPageNotifier.value = index;
+              _currentPageNotifier.value = index;
             },
-            itemCount: (categories.length / 3).ceil(),
+            itemCount: (_categories.length / 3).ceil(),
             itemBuilder: (context, index) {
               final startIndex = index * 3;
               final endIndex = startIndex + 3;
-              final items = categories.sublist(startIndex, endIndex > categories.length ? categories.length : endIndex);
+              final items = _categories.sublist(startIndex, endIndex > _categories.length ? _categories.length : endIndex);
               return Column(
                 children: items.asMap().entries.map((e) {
                   final index = e.key;
@@ -98,6 +98,7 @@ class _ListPageViewWithIndicatorState extends State<ListPageViewWithIndicator> {
                                     style: const TextStyle(
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.w700,
+                                      color: Colors.black87,
                                     ),
                                   ),
                                   Row(
@@ -106,7 +107,7 @@ class _ListPageViewWithIndicatorState extends State<ListPageViewWithIndicator> {
                                         '#RPG #어드벤처',
                                         style: TextStyle(
                                           fontSize: 12.0,
-                                          color: Theme.of(context).colorScheme.outline,
+                                          color: Colors.grey[600],
                                         ),
                                       ),
                                     ],
@@ -116,7 +117,7 @@ class _ListPageViewWithIndicatorState extends State<ListPageViewWithIndicator> {
                                       Icon(
                                         Icons.person,
                                         size: 14.0,
-                                        color: Theme.of(context).colorScheme.outline,
+                                        color: Colors.grey[600],
                                       ),
                                       const SizedBox(width: 2.0,),
                                       Text(
@@ -124,14 +125,14 @@ class _ListPageViewWithIndicatorState extends State<ListPageViewWithIndicator> {
                                         style: TextStyle(
                                           //fontWeight: FontWeight.w700,
                                           fontSize: 12.0,
-                                          color: Theme.of(context).colorScheme.outline,
+                                          color: Colors.grey[600],
                                         ),
                                       ),
                                       const SizedBox(width: 8.0,),
                                       Icon(
                                         Icons.remove_red_eye,
                                         size: 14.0,
-                                        color: Theme.of(context).colorScheme.outline,
+                                        color: Colors.grey[600],
                                       ),
                                       const SizedBox(width: 2.0,),
                                       Text(
@@ -139,7 +140,7 @@ class _ListPageViewWithIndicatorState extends State<ListPageViewWithIndicator> {
                                         style: TextStyle(
                                           //fontWeight: FontWeight.w700,
                                           fontSize: 12.0,
-                                          color: Theme.of(context).colorScheme.outline,
+                                          color: Colors.grey[600],
                                         ),
                                       ),
                                     ],
@@ -173,18 +174,18 @@ class _ListPageViewWithIndicatorState extends State<ListPageViewWithIndicator> {
         SizedBox(
           height: 32.0,
           child: ValueListenableBuilder<int>(
-            valueListenable: currentPageNotifier,
+            valueListenable: _currentPageNotifier,
             builder: (context, value, child) {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate((categories.length / 3).ceil(), (index) {
+                children: List.generate((_categories.length / 3).ceil(), (index) {
                   return Container(
                     width: 8.0,
                     height: 8.0,
                     margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: currentPageNotifier.value == index ? Colors.orange : Colors.grey[300],
+                      color: _currentPageNotifier.value == index ? Colors.orange : Colors.grey[300],
                     ),
                   );
                 }),

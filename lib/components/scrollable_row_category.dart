@@ -9,8 +9,8 @@ class ScrollableRowCategory extends StatefulWidget {
 
 class _ScrollableRowCategoryState extends State<ScrollableRowCategory> {
 
-  int selectedIndex = 0;
-  final categories = [
+  int _selectedIndex = 0;
+  final _categories = [
     '전체',
     'RPG',
     'FPS',
@@ -34,25 +34,25 @@ class _ScrollableRowCategoryState extends State<ScrollableRowCategory> {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        itemCount: categories.length,
+        itemCount: _categories.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(
               left: (index == 0) ? 16.0 : 0,
-              right: (index == categories.length - 1) ? 16.0 : 6,
+              right: (index == _categories.length - 1) ? 16.0 : 6,
             ),
             child: GestureDetector(
               onTap: () {
                 setState(() {
-                  selectedIndex = index;
+                  _selectedIndex = index;
                 });
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16.0),
-                  color: selectedIndex == index ? Colors.orange : Colors.transparent,
+                  color: _selectedIndex == index ? Colors.orange : Colors.transparent,
                   border: Border.all(
-                    color: selectedIndex == index ? Colors.transparent : Colors.grey,
+                    color: _selectedIndex == index ? Colors.transparent : Colors.grey,
                   ),
                 ),
                 padding: const EdgeInsets.symmetric(
@@ -60,11 +60,11 @@ class _ScrollableRowCategoryState extends State<ScrollableRowCategory> {
                   vertical: 8.0,
                 ),
                 child: Text(
-                  categories[index],
+                  _categories[index],
                   style: TextStyle(
-                    color: selectedIndex == index ? Colors.white : Colors.black87,
+                    color: _selectedIndex == index ? Colors.white : Colors.black87,
                     fontSize: 16.0,
-                    fontWeight: selectedIndex == index ? FontWeight.w700 : null,
+                    fontWeight: _selectedIndex == index ? FontWeight.w700 : null,
                   ),
                 ),
               ),

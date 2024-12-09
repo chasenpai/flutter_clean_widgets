@@ -9,8 +9,8 @@ class FlexibleRowCategory extends StatefulWidget {
 
 class _FlexibleRowCategoryState extends State<FlexibleRowCategory> {
 
-  int selectedIndex = 0;
-  final categories = [
+  int _selectedIndex = 0;
+  final _categories = [
     '전체',
     'RPG',
     'FPS',
@@ -39,25 +39,25 @@ class _FlexibleRowCategoryState extends State<FlexibleRowCategory> {
               fontWeight: FontWeight.w700
           ),
         ),
-        const SizedBox(height: 10.0,),
+        const SizedBox(height: 16.0,),
         Wrap(
           spacing: 6.0,
           runSpacing: 8.0,
-          children: categories.asMap().entries.map((e) {
+          children: _categories.asMap().entries.map((e) {
             final index = e.key;
             final value = e.value;
             return GestureDetector(
               onTap: () {
                 setState(() {
-                  selectedIndex = index;
+                  _selectedIndex = index;
                 });
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16.0),
-                  color: selectedIndex == index ? Colors.orange : Colors.transparent,
+                  color: _selectedIndex == index ? Colors.orange : Colors.transparent,
                   border: Border.all(
-                    color: selectedIndex == index ? Colors.transparent : Colors.grey,
+                    color: _selectedIndex == index ? Colors.transparent : Colors.grey,
                   ),
                 ),
                 padding: const EdgeInsets.symmetric(
@@ -67,9 +67,9 @@ class _FlexibleRowCategoryState extends State<FlexibleRowCategory> {
                 child: Text(
                   value,
                   style: TextStyle(
-                    color: selectedIndex == index ? Colors.white : Colors.black87,
+                    color: _selectedIndex == index ? Colors.white : Colors.black87,
                     fontSize: 16.0,
-                    fontWeight: selectedIndex == index ? FontWeight.w700 : null,
+                    fontWeight: _selectedIndex == index ? FontWeight.w700 : null,
                   ),
                 ),
               ),

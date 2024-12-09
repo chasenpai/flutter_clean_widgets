@@ -10,7 +10,7 @@ class UpcomingOneWeekCalendar extends StatefulWidget {
 
 class _UpcomingOneWeekCalendarState extends State<UpcomingOneWeekCalendar> {
 
-  int selectedIndex = 0;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class _UpcomingOneWeekCalendarState extends State<UpcomingOneWeekCalendar> {
             child: GestureDetector(
               onTap: () {
                 setState(() {
-                  selectedIndex = index;
+                  _selectedIndex = index;
                 });
               },
               child: Container(
@@ -37,7 +37,7 @@ class _UpcomingOneWeekCalendarState extends State<UpcomingOneWeekCalendar> {
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(16.0),
-                  color: selectedIndex == index ? Colors.orange : Colors.transparent,
+                  color: _selectedIndex == index ? Colors.orange : Colors.transparent,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
@@ -47,16 +47,16 @@ class _UpcomingOneWeekCalendarState extends State<UpcomingOneWeekCalendar> {
                       Text(
                         index == 0 ? '오늘' : dayStr,
                         style: TextStyle(
-                          color: selectedIndex == index ? Colors.white : Colors.black,
-                          fontWeight: selectedIndex == index ? FontWeight.w700 : null,
+                          color: _selectedIndex == index ? Colors.white : Colors.black87,
+                          fontWeight: _selectedIndex == index ? FontWeight.w700 : FontWeight.w500,
                           fontSize: 13.0,
                         ),
                       ),
                       Text(
                         day.day.toString(),
                         style: TextStyle(
-                          color: selectedIndex == index ? Colors.white : Colors.black,
-                          fontWeight: selectedIndex == index ? FontWeight.w700 : null,
+                          color: _selectedIndex == index ? Colors.white : Colors.black87,
+                          fontWeight: _selectedIndex == index ? FontWeight.w700 : null,
                           fontSize: 16.0,
                         ),
                       )
