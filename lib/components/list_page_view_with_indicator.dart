@@ -33,6 +33,13 @@ class _ListPageViewWithIndicatorState extends State<ListPageViewWithIndicator> {
   ];
 
   @override
+  void dispose() {
+    _pageController.dispose();
+    _currentPageNotifier.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
