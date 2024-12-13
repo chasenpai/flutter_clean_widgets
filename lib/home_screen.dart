@@ -3,8 +3,10 @@ import 'package:flutter_clean_widgets/components/flexible_row_category.dart';
 import 'package:flutter_clean_widgets/components/horizontal_overlay_card_list.dart';
 import 'package:flutter_clean_widgets/components/information_bar.dart';
 import 'package:flutter_clean_widgets/components/list_page_view_with_indicator.dart';
+import 'package:flutter_clean_widgets/components/multi_todo_card.dart';
 import 'package:flutter_clean_widgets/components/partial_list_page_view.dart';
 import 'package:flutter_clean_widgets/components/scrollable_row_category.dart';
+import 'package:flutter_clean_widgets/components/single_todo_card.dart';
 import 'package:flutter_clean_widgets/components/upcoming_one_week_calendar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         top: true,
         child: Column(
@@ -74,14 +77,28 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                       PartialListPageView(),
                       SizedBox(height: 24,),
                       HorizontalOverlayCardList(),
+                      SizedBox(height: 24,),
                     ],
                   ),
-                  Container(
-                    child: Text('2',),
+                  ListView(
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 12.0,
+                        ),
+                        child: SingleTodoCard(),
+                      ),
+                      SizedBox(height: 24,),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                        ),
+                        child: MultiTodoCard(),
+                      ),
+                      SizedBox(height: 24,),
+                    ],
                   ),
-                  Container(
-                    child: Text('3',),
-                  ),
+                  Container(),
                 ],
               ),
             ),
